@@ -12,7 +12,6 @@ use Yii;
 use yii\web\Controller;
 use frontend\models\MyFirstModel;
 
-
 class FirstController extends Controller
 {
 

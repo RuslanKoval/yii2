@@ -16,6 +16,7 @@ class MyFirstModel extends Model
 
     public function show()
     {
+
         return [
             'name' => 'Ruslan',
             'surname' => 'Koval'
