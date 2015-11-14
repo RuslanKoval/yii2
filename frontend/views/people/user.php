@@ -1,4 +1,7 @@
-
+<?php
+use yii\helpers\Url;
+$absoluteBaseUrl = Url::base(true);
+?>
 <table class="table">
     <thead>
       <tr>
@@ -18,4 +21,4 @@
     </tbody>
   </table>
 
-<a href="http://yii2.local/people/all" class="btn btn-primary">go back</a>
+<a href="<?php echo $absoluteBaseUrl?>/people/all" class="btn btn-primary">go back</a>
