@@ -28,7 +28,9 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
+        'peopleComponent' => [
+            'class' => 'app\components\PeopleComponent'
+        ],
     ],
     'params' => $params,
 ];

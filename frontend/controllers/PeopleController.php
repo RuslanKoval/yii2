@@ -20,8 +20,10 @@ class PeopleController extends Controller
     public function actionIndex()
     {
         $people = new People();
+
         return $this->render('people', [
-            'people' => $people
+            'people' => $people,
+            'PeopleModel' => Yii::$app->peopleComponent->PeopleModel($people)
         ]);
     }
 
