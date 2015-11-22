@@ -10,10 +10,10 @@ class m151113_193435_table extends Migration
 	$this->createTable('people', [
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . '(50) NOT NULL',
-	    'surname' => Schema::TYPE_STRING . '(50) NOT NULL',
+	        'surname' => Schema::TYPE_STRING . '(50) NOT NULL',
             'age' => Schema::TYPE_INTEGER . '(8) NOT NULL',
             'comments' => Schema::TYPE_TEXT,
-	    'date' => Schema::TYPE_INTEGER . '(100) NOT NULL'
+	        'date' => Schema::TYPE_INTEGER . '(100) NOT NULL'
         ]);
     }
 

@@ -27,3 +27,4 @@ $absoluteBaseUrl = Url::base(true);
     </tbody>
 </table>
 
+<a href="<?php echo $absoluteBaseUrl?>/people/add" class="btn btn-primary">add new</a>

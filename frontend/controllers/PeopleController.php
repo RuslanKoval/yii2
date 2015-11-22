@@ -7,9 +7,13 @@
  */
 
 namespace frontend\controllers;
+use frontend\models\modelForm\AddUser;
 use frontend\models\People;
 use Yii;
 use yii\web\Controller;
+use frontend\models\modelForm\MyForm;
+use yii\base\UnknownPropertyException;
+use yii\web\UploadedFile;
 
 class PeopleController extends Controller
 {
@@ -29,7 +33,7 @@ class PeopleController extends Controller
 
     public function actionAll()
     {
-        $data = People::find()
+        $data = AddUser::find()
             ->indexBy('id')
             ->all();
         return $this->render('all', [
@@ -39,7 +43,7 @@ class PeopleController extends Controller
 
     public function actionUser($id)
     {
-        $data = People::find()
+        $data = AddUser::find()
             ->where(['id' => $id])
             ->one();
         return $this->render('user', [
@@ -49,9 +53,24 @@ class PeopleController extends Controller
 
     public function actionDelete($id)
     {
-        People::deleteAll(['id' => $id]);
+        AddUser::deleteAll(['id' => $id]);
         $this->redirect('/people/all',302);
     }
 
+    public function actionAdd()
+    {
+        $model = new MyForm();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->photo = UploadedFile::getInstance($model, 'photo');
+            if ($model->addNewUser()) {
+                    return $this->redirect('/people/all');
+
+            }
+        }
+        return $this->render('add', [
+            'model' => $model,
+        ]);
+    }
 
 }
