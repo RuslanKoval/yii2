@@ -19,7 +19,6 @@ class MyForm extends Model
      * @var UploadedFile
      */
     public $photo;
-
     public $name;
     public $surname;
     public $email;
@@ -29,6 +28,8 @@ class MyForm extends Model
     public $date;
     public $lang;
     public $about;
+    private $phoneValidator  = '/^[0-9]{10}$/';
+
 
     public function rules()
     {
@@ -43,6 +44,7 @@ class MyForm extends Model
             [['surname'], 'required', 'message' => 'Пожайлуста введите свою фамилию'],
             [['email'], 'email', 'message' => 'Пожайлуста введите свой E-mail'],
             [['email'], 'required', 'message' => 'Пожайлуста введите свой E-mail'],
+            [['phone'], 'match', 'pattern' =>$this->phoneValidator, 'message' => 'Пожайлуста введите свой номер'],
             [['phone'], 'required', 'message' => 'Пожайлуста введите свой номер'],
             [['role'], 'required', 'message' => 'Пожайлуста виберете роль'],
             [['vk'], 'url', 'defaultScheme' => 'http', 'message' => 'Пожайлуста введите ссилку'],
@@ -50,7 +52,6 @@ class MyForm extends Model
             [['photo'], 'file', 'skipOnEmpty' => false, 'extensions' => ['png', 'jpg', 'gif'], 'maxSize' => 500*300],
         ];
     }
-
     public function addNewUser()
     {
         if ($this->validate()) {
