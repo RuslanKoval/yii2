@@ -20,6 +20,7 @@ use yii\base\UnknownPropertyException;
 
 class BlogController extends Controller
 {
+    public $layout = 'blog';
     /**
      * @return string
      */
